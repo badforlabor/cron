@@ -5,6 +5,7 @@ import (
 	"runtime"
 	"sort"
 	"time"
+	"github.com/robfig/cron/goext"
 )
 
 // Cron keeps track of any number of entries, invoking the associated func as
@@ -178,13 +179,13 @@ func (c *Cron) run() {
 		// Determine the next entry to run.
 		sort.Sort(byTime(c.entries))
 
-		var timer *time.Timer
+		var timer *goext.Timer
 		if len(c.entries) == 0 || c.entries[0].Next.IsZero() {
 			// If there are no entries yet, just sleep - it still handles new entries
 			// and stop requests.
-			timer = time.NewTimer(100000 * time.Hour)
+			timer = goext.NewTimer(100000 * time.Hour)
 		} else {
-			timer = time.NewTimer(c.entries[0].Next.Sub(now))
+			timer = goext.NewTimer(c.entries[0].Next.Sub(now))
 		}
 
 		for {
