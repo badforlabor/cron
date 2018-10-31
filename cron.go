@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"sort"
 	"time"
-	"github.com/robfig/cron/goext"
+	"cron/goext"
 )
 
 // Cron keeps track of any number of entries, invoking the associated func as
