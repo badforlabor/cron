@@ -1,1 +1,1 @@
-module cron
+module github.com/badforlabor/cron

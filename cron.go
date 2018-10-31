@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"sort"
 	"time"
-	"cron/goext"
+	"github.com/badforlabor/cron/goext"
 )
 
 // Cron keeps track of any number of entries, invoking the associated func as
